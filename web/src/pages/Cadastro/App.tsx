@@ -1,27 +1,20 @@
+import { InputForm } from "@/components/InputForm";
+
 export default function Cadastro() {
-  
   return (
     <div className="cadastro">
-      <form  className="formulario">
-        <h1>Cadastrar</h1>
-        <p>Criar nova conta</p>
-        <div className="input-field">
-          <input type="username" placeholder="Digite o nome de usuario"/>
-        </div>
-        <div className="input-field">
-          <input type="email" placeholder="E-mail"/>
-        </div>
-        <div className="input-field">
-          <input type="tel" id="phone" placeholder="Telefone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
-        </div>
-        <div className="input-field">
-          <input type="password" placeholder="Senha"/>
-        </div>
-        <button>Cadastrar</button>
-        <p>Ja tem uma conta? <a href="#">Entrar</a> </p>
-        
+      <form className="p-5 flex flex-col min-w-3/4">
+        <h1 className="text-center font-medium text-[1.75rem]">Cadastrar</h1>
+        <p className="text-center font-medium text-[1.25rem]">
+          Criar nova conta
+        </p>
+        <InputForm
+          label="Nome de usuário"
+          placeholder="Digite o nome de usuário"
+          id="username"
+        />
+        <InputForm label="Email" placeholder="Email" id="email"/>
       </form>
-      
     </div>
-  )
+  );
 }

@@ -1,21 +1,11 @@
-*{
-  margin: 0;
-  padding: 0;
-  font-family:  Calibri;
-  box-sizing: border-box;
-  
-}
-
 .cadastro{
   display: flex;
-  justify-content: left;
   align-items: center;
   min-height: 100vh;
   
 }
 
 .formulario{
-  justify-content: left;
   align-items: center;
   min-height: 100vh;
   padding: 30vh;
