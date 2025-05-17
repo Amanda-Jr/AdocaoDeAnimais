@@ -1,3 +1,5 @@
+package java.sistema;
+
 public class Status {
 
     private boolean disponivel;
