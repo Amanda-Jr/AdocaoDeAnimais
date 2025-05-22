@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tb_animais")
@@ -19,7 +17,7 @@ public class AnimalModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_animal")
-    private UUID id;
+    private Long id;
 
     @Column(name = "nome", nullable = false)
     private String nome;
@@ -39,8 +37,8 @@ public class AnimalModel {
     @Column(name = "esta_visivel")
     private boolean visivel;
 
-    //@Column(name = "imagens")
-    //private BufferedImage imagem;
+    @Column(name = "imagens")
+    private String imagemUrl;
 
     @OneToMany
     @JoinColumn(name = "id_vacinas")

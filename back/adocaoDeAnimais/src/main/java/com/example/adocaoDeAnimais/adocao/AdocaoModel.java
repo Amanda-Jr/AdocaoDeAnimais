@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tb_adocoes")
@@ -18,21 +17,19 @@ public class AdocaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_adocao")
-    private UUID id;
+    private Long id;
 
     //@ManyToOne
     //@JoinColumn(name = "id_adotante")
-    //private AdotanteModel adotante;
+    //private AdotanteModel adotanteId;
 
     @ManyToOne
     @JoinColumn(name = "id_animal")
-    private AnimalModel nomeAnimal;
+    private AnimalModel animalId;
 
-    @Column(name = "data_adocao")
+    @Column(nullable = false, updatable = false)
     private LocalDate dataAdocao;
 
-    @OneToOne
-    @JoinColumn(name = "id_status")
-    private Status status;
+    private StatusAdocao status;
 
 }

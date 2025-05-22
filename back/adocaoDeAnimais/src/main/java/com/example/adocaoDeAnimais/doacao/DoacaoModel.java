@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tb_doacoes")
@@ -18,12 +17,12 @@ public class DoacaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private UUID id;
+    private Long id;
 
     @Column(name = "nome_doador", nullable = false)
     private String nomeDoador;
 
-    @Column(name = "valor_doado")
+    @Column(name = "valor_doado", nullable = false)
     private double valor;
 
     @Column(name = "data_nascimento", nullable = false)
