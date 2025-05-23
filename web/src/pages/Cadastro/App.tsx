@@ -20,7 +20,7 @@ export default function Cadastro() {
         <p className="pl-5 text-start text-[1.2rem]">Ja tem uma conta?  <Button className="bg-white text-[#091E3E] w-1xs border-4 border-[#C78E00]" label="Login"/></p>
         
       </form>
-      <img className="h-auto max-w-md ms-auto" src="./src/images/cadastro/gatoCadastro.png" alt="image description"></img>
+      <img className="ms-auto w-auto h-screen" src="./src/images/cadastro/gatoCadastro.png" alt="image description"></img>
       
     </div>
     
