@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { Button, InputForm } from "@/components/InputForm";
+import { Button } from "@/components/Button";
+import { InputForm } from "@/components/InputForm";
 
 const api = axios.create({
   baseURL: "http://localhost:8081/api",
