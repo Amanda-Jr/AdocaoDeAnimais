@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/Button";
 import { InputForm } from "@/components/InputForm";
+import { useNavigate } from "react-router-dom";
 
 const api = axios.create({
   baseURL: "http://localhost:8081/api",
@@ -19,6 +20,7 @@ export default function Cadastro() {
     password: "",
   });
 
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -26,8 +28,25 @@ export default function Cadastro() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   }
 
+  const irParaLogin = () => {
+    navigate('/login');
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    // Validação: verifica se algum campo está vazio
+    if (
+        !formData.username.trim() ||
+        !formData.email.trim() ||
+        !formData.tel.trim() ||
+        !formData.password.trim()
+    ) {
+      setErrorMessage("Por favor, preencha todos os campos!");
+      setSuccessMessage("");
+      return; // Interrompe o envio dos dados se houver campos vazios
+    }
+
     try {
       const response = await api.post("/adotante/cadastro", {
         nome: formData.username,
@@ -38,16 +57,20 @@ export default function Cadastro() {
       console.log("Cadastro realizado:", response.data);
       setSuccessMessage("Cadastro realizado com sucesso!");
       setErrorMessage("");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Erro ao cadastrar:", error);
-      if (error.response && error.response.data && error.response.data.message) {
+
+      if (axios.isAxiosError(error) && error.response?.data?.message) {
         setErrorMessage(error.response.data.message);
+      } else if (error instanceof Error) {
+        setErrorMessage(error.message);
       } else {
         setErrorMessage("Erro ao cadastrar. Por favor, verifique os dados e tente novamente.");
       }
       setSuccessMessage("");
     }
   }
+
 
   return (
       <div className="cadastro">
@@ -60,6 +83,7 @@ export default function Cadastro() {
               id="username"
               onChange={handleChange}
               value={formData.username}
+              required
           />
           <InputForm
               label="Email"
@@ -88,6 +112,7 @@ export default function Cadastro() {
             <Button
                 className="bg-white text-[#091E3E] w-1xs border-4 border-[#C78E00]"
                 label="Login"
+                onClick={irParaLogin}
             />
           </p>
         </form>
