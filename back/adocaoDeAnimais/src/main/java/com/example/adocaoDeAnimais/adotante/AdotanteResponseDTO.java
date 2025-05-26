@@ -1,8 +1,6 @@
 package com.example.adocaoDeAnimais.adotante;
 
-import java.time.LocalDate;
-
-public record AdotanteDTO(
+public record AdotanteResponseDTO(
         Long idAdotante,
         String nome,
         String email,

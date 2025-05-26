@@ -1,5 +1,6 @@
 package com.example.adocaoDeAnimais.adocao;
 
+import com.example.adocaoDeAnimais.adotante.AdotanteModel;
 import com.example.adocaoDeAnimais.animal.AnimalModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,9 +20,9 @@ public class AdocaoModel {
     @Column(name = "id_adocao")
     private Long id;
 
-    //@ManyToOne
-    //@JoinColumn(name = "id_adotante")
-    //private AdotanteModel adotanteId;
+    @ManyToOne
+    @JoinColumn(name = "id_adotante")
+    private AdotanteModel adotanteId;
 
     @ManyToOne
     @JoinColumn(name = "id_animal")

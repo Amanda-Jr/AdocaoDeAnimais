@@ -17,7 +17,7 @@ public class AnimalModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_animal")
-    private Long id;
+    private Long idAnimal;
 
     @Column(name = "nome", nullable = false)
     private String nome;
@@ -40,8 +40,7 @@ public class AnimalModel {
     @Column(name = "imagens")
     private String imagemUrl;
 
-    @OneToMany
-    @JoinColumn(name = "id_vacinas")
-    private List<VacinasModel> vacinas;
+    @ElementCollection
+    private List<String> vacinas;
 
 }
