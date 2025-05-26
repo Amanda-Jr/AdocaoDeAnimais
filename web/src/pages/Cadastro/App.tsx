@@ -127,20 +127,6 @@ export default function Cadastro() {
             src="./src/images/cadastro/gatoCadastro.png"
             alt="Descrição da imagem"
         />
-<<<<<<< HEAD
-        <InputForm label="Email" placeholder="Email" id="email"/>
-        <InputForm label="Numero de Telefone" placeholder="Digite o seu numero de Telefone" id="tel"/>
-        <InputForm label="Senha" placeholder="Digite sua senha" id="password"/>
-        <Button label="Cadastrar"/>
-        <p className="pl-5 text-start text-[1.2rem]">Ja tem uma conta?  <Button className="bg-white text-[#091E3E] w-1xs border-4 border-[#C78E00]" label="Login"/></p>
-        
-      </form>
-      <img className="ms-auto w-auto h-screen" src="./src/images/cadastro/gatoCadastro.png" alt="image description"></img>
-      
-    </div>
-    
-=======
       </div>
->>>>>>> 3ec8035a2f60628c27ceb2f501b4b43992b1cb40
   );
 }
