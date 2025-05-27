@@ -1,4 +1,3 @@
-import React from "react";
 import { Mars, Venus } from "lucide-react";
 
 export type Animal = {
