@@ -19,28 +19,22 @@ public class AnimalModel {
     @Column(name = "id_animal")
     private Long idAnimal;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "tipo_animal", nullable = false)
+    private String animal;
+
+    @Column(name = "tamanho")
+    private String size;
+
+    @Column(name = "idade")
+    private String age;
+
+    @Column(name = "localizacao")
+    private String location;
+
+    @Column(name = "nome")
     private String nome;
 
-    @Column(name = "raca")
-    private String raca;
-
-    @Column(name = "data_nascimento")
-    private LocalDate dataNasc;
-
-    @Column(name = "eh_castrado")
-    private boolean castracao;
-
-    @Column(name = "resumo_animal", length = 500)
-    private String resumo;
-
-    @Column(name = "esta_visivel")
-    private boolean visivel;
-
-    @Column(name = "imagens")
+    @Column(name = "imagem")
     private String imagemUrl;
-
-    @ElementCollection
-    private List<String> vacinas;
 
 }

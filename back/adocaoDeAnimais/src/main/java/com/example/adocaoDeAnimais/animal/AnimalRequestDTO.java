@@ -1,13 +1,10 @@
 package com.example.adocaoDeAnimais.animal;
 
-import java.time.LocalDate;
-
-public record AnimalRequestDTO(String nome,
-                               String raca,
-                               LocalDate dataNasc,
-                               boolean castracao,
-                               String resumo,
-                               boolean visivel,
-                               String imagemUrl,
-                               String vacinas
+public record AnimalRequestDTO(
+        String animal,
+        String size,
+        String age,
+        String location,
+        String name,
+        String image
 ) {}

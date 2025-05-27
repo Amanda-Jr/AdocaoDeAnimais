@@ -21,11 +21,22 @@ public class AnimalController {
         return ResponseEntity.ok(animalCadastrado);
     }
 
+    @GetMapping("/busca")
+    public ResponseEntity<List<AnimalResponseDTO>> buscaAnimais(
+            @RequestParam(required = false) String animal,
+            @RequestParam(required = false) String size,
+            @RequestParam(required = false) String age,
+            @RequestParam(required = false) String location) {
+
+        System.out.println("Parâmetros recebidos: animal=" + animal + ", size=" + size + ", age=" + age + ", location=" + location);
+
+        List<AnimalResponseDTO> animais = animalService.buscarAnimais(animal, size, age, location);
+        return ResponseEntity.ok(animais);
+    }
+
     @GetMapping("/listar")
     public ResponseEntity<List<AnimalResponseDTO>> listarAnimais() {
         List<AnimalResponseDTO> animais = animalService.listarAnimais();
         return ResponseEntity.ok(animais);
     }
-
-    //criar a busca
 }
