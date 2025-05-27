@@ -84,12 +84,19 @@ export default function Login() {
                 </p>
             </form>
 
-            <img className="h-auto max-w-md ms-auto"
-                 src="./src/vectors/pataVetor.svg"
-                 alt="image description" />
-            <img className="h-auto max-w-md ms-auto"
-                 src="./src/images/login/gatoCachorro.png"
-                 alt="image description" />
+              <div className="relative min-w-2/4 h-auto max-w-md ms-aut h-screen overflow-hidden">
+                <img
+                src="./src/vectors/pataVetor.svg"
+                alt="Imagem de fundo"
+                className="w-[120%] h-[120%] object-cover"
+                />
+
+                <img
+                src="./src/images/login/gatoCachorro.png"
+                alt="Imagem sobreposta"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-x-[-1]"
+                />
+            </div>
         </div>
     );
 }

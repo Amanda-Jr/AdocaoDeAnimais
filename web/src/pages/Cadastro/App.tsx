@@ -122,11 +122,7 @@ export default function Cadastro() {
         {successMessage && (
             <p style={{ color: "green", marginTop: "1rem" }}>{successMessage}</p>
         )}
-        <img
-            className="h-auto max-w-md ms-auto"
-            src="./src/images/cadastro/gatoCadastro.png"
-            alt="Descrição da imagem"
-        />
+        <img className="ms-auto w-auto h-screen" src="./src/images/cadastro/gatoCadastro.png" alt="image description"></img>
       </div>
   );
 }
