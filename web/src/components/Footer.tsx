@@ -34,9 +34,16 @@ export function Footer() {
 
     <div className="text-light-text flex flex-row items-center relative px-14 py-3">
       <div className="flex gap-4 items-center font-medium">
-        <img className="size-8" src="./src/icons/twitter.png" alt="Twitter" />
-        <img className="size-8" src="./src/icons/facebook.png" alt="Facebook" />
-        <img className="size-8" src="./src/icons/instagram.png" alt="Instagram" />
+        <a target="_blank" rel="noopener noreferrer" href="https://www.x.com">
+          <img className="size-8" src="./src/icons/twitter.png" alt="Twitter" />
+        </a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com">
+          <img className="size-8" src="./src/icons/facebook.png" alt="Facebook" />
+        </a>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com">
+          <img className="size-8" src="./src/icons/instagram.png" alt="Instagram" />
+        </a>
+        
       </div>
 
       <a href="#" className="text-gray-text absolute left-1/2 transform -translate-x-1/2 font-medium underline">

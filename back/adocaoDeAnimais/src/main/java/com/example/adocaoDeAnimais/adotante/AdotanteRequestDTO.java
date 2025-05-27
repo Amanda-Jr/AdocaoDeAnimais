@@ -1,9 +1,8 @@
 package com.example.adocaoDeAnimais.adotante;
 
 import jakarta.validation.constraints.*;
-import java.time.LocalDate;
 
-public record AdotanteCadastroDTO(
+public record AdotanteRequestDTO(
         @NotBlank(message = "Nome é obrigatório")
         String nome,
 

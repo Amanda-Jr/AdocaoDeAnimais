@@ -22,10 +22,10 @@ public class AdotanteService {
     }
 
 
-    public AdotanteDTO cadastrarAdotante(@Valid AdotanteCadastroDTO dto){
+    public AdotanteResponseDTO cadastrarAdotante(@Valid AdotanteRequestDTO dto){
         Optional<AdotanteModel> adotantes = adotanteRepository.findByEmail(dto.email());
         if(adotantes.isPresent())
-            throw new ValidationException("Emmail já cadastrado.");
+            throw new ValidationException("Email já cadastrado.");
 
         String senhaCriptografada = passwordEncoder.encode(dto.senha());
 
@@ -62,14 +62,14 @@ public class AdotanteService {
 
     public void removerAdotante(){}
 
-    public AdotanteDTO acessarAdotante(Long id){
+    public AdotanteResponseDTO acessarAdotante(Long id){
         AdotanteModel adotante = adotanteRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Adotante não encontrado"));
         return converterParaDTO(adotante);
     }
 
-    public List<AdotanteDTO> listarAdotantes() {
+    public List<AdotanteResponseDTO> listarAdotantes() {
         List<AdotanteModel> adotantes = adotanteRepository.findAll();
-        List<AdotanteDTO> resultado = new ArrayList<>();
+        List<AdotanteResponseDTO> resultado = new ArrayList<>();
 
         for (AdotanteModel adotante : adotantes) {
             resultado.add(converterParaDTO(adotante));
@@ -78,8 +78,8 @@ public class AdotanteService {
     }
 
 
-    private AdotanteDTO converterParaDTO(AdotanteModel adotante) {
-        return new AdotanteDTO(
+    private AdotanteResponseDTO converterParaDTO(AdotanteModel adotante) {
+        return new AdotanteResponseDTO(
                 adotante.getIdAdotante(),
                 adotante.getNome(),
                 adotante.getEmail(),

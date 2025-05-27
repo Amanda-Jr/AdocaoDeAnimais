@@ -18,9 +18,9 @@ public class AdotanteController {
         this.adotanteService = adotanteService;
     }
 
-    @PostMapping(value = "/cadastro", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<AdotanteDTO> cadastrarAdotante(@RequestBody AdotanteCadastroDTO dto) {
-        AdotanteDTO adotanteCadastrado = adotanteService.cadastrarAdotante(dto);
+    @PostMapping(value = "/cadastro")
+    public ResponseEntity<AdotanteResponseDTO> cadastrarAdotante(@RequestBody AdotanteRequestDTO dto) {
+        AdotanteResponseDTO adotanteCadastrado = adotanteService.cadastrarAdotante(dto);
         return ResponseEntity.ok(adotanteCadastrado);
     }
 
@@ -36,8 +36,8 @@ public class AdotanteController {
 
 
     @GetMapping("/listar")
-    public ResponseEntity<List<AdotanteDTO>> listarAdotantes() {
-        List<AdotanteDTO> adotantes = adotanteService.listarAdotantes();
+    public ResponseEntity<List<AdotanteResponseDTO>> listarAdotantes() {
+        List<AdotanteResponseDTO> adotantes = adotanteService.listarAdotantes();
         return ResponseEntity.ok(adotantes);
     }
 
