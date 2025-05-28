@@ -12,7 +12,7 @@ export default function Login() {
     const handleLogin = async () => {
         setErrorMessage("");
         try {
-            const response = await fetch("http://localhost:8081/api/adotante/login", {
+            const response = await fetch("http://localhost:8081/api/sistema/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -26,7 +26,8 @@ export default function Login() {
             }
 
             const data = await response.json();
-            alert(`Bem-vindo, ${data.nome}!`);
+            console.log("Dados do login:", data);
+            navigate("/");
         } catch (error) {
             if (error instanceof Error) {
                 setErrorMessage(error.message);
@@ -40,6 +41,7 @@ export default function Login() {
     const irParaCadastro = () => {
         navigate('/cadastro');
     }
+
 
     return (
         <div className="login">

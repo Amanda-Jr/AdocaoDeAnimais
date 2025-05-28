@@ -35,7 +35,6 @@ export default function Cadastro() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // Validação: verifica se algum campo está vazio
     if (
         !formData.username.trim() ||
         !formData.email.trim() ||
@@ -44,11 +43,11 @@ export default function Cadastro() {
     ) {
       setErrorMessage("Por favor, preencha todos os campos!");
       setSuccessMessage("");
-      return; // Interrompe o envio dos dados se houver campos vazios
+      return;
     }
 
     try {
-      const response = await api.post("/adotante/cadastro", {
+      const response = await api.post("/sistema/cadastro", {
         nome: formData.username,
         email: formData.email,
         telefone: formData.tel,

@@ -36,7 +36,7 @@ export function AdoptionList() {
 
   useEffect(() => {
     axios
-        .get("http://localhost:8081/api/animal/listar")
+        .get("http://localhost:8081/api/sistema/listar")
         .then((response) => {
           setAnimais(response.data);
         })
@@ -48,7 +48,7 @@ export function AdoptionList() {
     const handleFormSubmit: SubmitHandler<AdoptionFilterProps> = (data) => {
         console.log("Dados do formulário:", data);
         axios
-            .get("http://localhost:8081/api/animal/busca", { params: data })
+            .get("http://localhost:8081/api/sistema/filtro", { params: data })
             .then((response) => {
                 setAnimais(response.data);
             })
