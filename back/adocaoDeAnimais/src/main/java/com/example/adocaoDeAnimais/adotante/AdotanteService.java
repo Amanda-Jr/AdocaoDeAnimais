@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.naming.AuthenticationException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -58,14 +57,6 @@ public class AdotanteService {
 
     }
 
-    public void atualizarAdotante(){}
-
-    public void removerAdotante(){}
-
-    public AdotanteResponseDTO acessarAdotante(Long id){
-        AdotanteModel adotante = adotanteRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Adotante não encontrado"));
-        return converterParaDTO(adotante);
-    }
 
     public List<AdotanteResponseDTO> listarAdotantes() {
         List<AdotanteModel> adotantes = adotanteRepository.findAll();

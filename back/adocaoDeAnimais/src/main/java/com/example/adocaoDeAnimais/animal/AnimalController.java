@@ -27,9 +27,6 @@ public class AnimalController {
             @RequestParam(required = false) String size,
             @RequestParam(required = false) String age,
             @RequestParam(required = false) String location) {
-
-        System.out.println("Parâmetros recebidos: animal=" + animal + ", size=" + size + ", age=" + age + ", location=" + location);
-
         List<AnimalResponseDTO> animais = animalService.buscarAnimais(animal, size, age, location);
         return ResponseEntity.ok(animais);
     }
