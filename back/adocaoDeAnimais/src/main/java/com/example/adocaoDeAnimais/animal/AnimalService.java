@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -73,6 +74,14 @@ public class AnimalService {
         return animais.stream()
                 .map(this::converterParaResponse)
                 .collect(Collectors.toList());
+    }
+
+    public void deletarAnimal(Long id) {
+        if(animalRepository.existsById(id)) {
+            animalRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Adotante não econtrado! ");
+        }
     }
 
     public AnimalResponseDTO converterParaResponse(AnimalModel animal) {
