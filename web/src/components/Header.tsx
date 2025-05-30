@@ -21,7 +21,7 @@ export function Header() {
           Adotar
         </a>
         <a className="fill-blue-500 ml-5" href="/cadastro">
-          <img className="size-8" src="./src/icons/conta.png" alt="Instagram" />
+          <img className="size-8" src="/icons/conta.png" alt="Instagram" />
         </a>
       </nav>
     </header>

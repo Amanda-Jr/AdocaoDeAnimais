@@ -10,6 +10,7 @@ import './pages/globals.css'
 import Login from './pages/Login/App.tsx';
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { PetDetailsPage } from './pages/Pet/petId/details/PetDetailsPage.tsx';
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Home />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/pet/:petId/details" element={<PetDetailsPage />} />
       </Routes>
     </BrowserRouter>
     <Footer />
