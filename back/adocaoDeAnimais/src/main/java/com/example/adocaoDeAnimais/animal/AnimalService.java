@@ -25,13 +25,17 @@ public class AnimalService {
         animal.setLocation(animalDto.location());
         animal.setNome(animalDto.name());
         animal.setImagemUrl(animalDto.image());
+        animal.setDataNascimento(animalDto.dataNascimento());
+        animal.setVacinado(animalDto.vacinado());
+        animal.setCastrado(animalDto.castrado());
+        animal.setResumo(animalDto.resumo());
 
         AnimalModel saveAnimal = animalRepository.save(animal);
 
         return converterParaResponse(saveAnimal);
     }
 
-    public List<AnimalResponseDTO> buscarAnimais(String animal, String size, String age, String location) {
+    public List<AnimalFiltroDTO> buscarAnimais(String animal, String size, String age, String location) {
         Specification<AnimalModel> spec = (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -65,15 +69,22 @@ public class AnimalService {
         List<AnimalModel> animais = animalRepository.findAll(spec);
 
         return animais.stream()
-                .map(this::converterParaResponse)
+                .map(this::converterParaFiltroDto)
                 .collect(Collectors.toList());
     }
 
-    public List<AnimalResponseDTO> listarAnimais() {
+
+    public List<AnimalFiltroDTO> listarAnimais() {
         List<AnimalModel> animais = animalRepository.findAll();
         return animais.stream()
-                .map(this::converterParaResponse)
+                .map(this::converterParaFiltroDto)
                 .collect(Collectors.toList());
+    }
+
+    public AnimalResponseDTO buscaAnimalPorId(Long id) {
+        AnimalModel animal = animalRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Animal não encontrado!"));
+        return converterParaResponse(animal);
     }
 
     public void deletarAnimal(Long id) {
@@ -84,6 +95,18 @@ public class AnimalService {
         }
     }
 
+    public AnimalFiltroDTO converterParaFiltroDto(AnimalModel animal) {
+        return new AnimalFiltroDTO(
+                animal.getIdAnimal(),
+                animal.getAnimal(),
+                animal.getNome(),
+                animal.getAge(),
+                animal.getSize(),
+                animal.getLocation(),
+                animal.getImagemUrl()
+        );
+    }
+
     public AnimalResponseDTO converterParaResponse(AnimalModel animal) {
         return new AnimalResponseDTO(
                 animal.getIdAnimal(),
@@ -92,7 +115,11 @@ public class AnimalService {
                 animal.getAge(),
                 animal.getLocation(),
                 animal.getNome(),
-                animal.getImagemUrl()
+                animal.getImagemUrl(),
+                animal.getDataNascimento(),
+                animal.getVacinado(),
+                animal.getCastrado(),
+                animal.getResumo()
         );
     }
 

@@ -31,7 +31,7 @@ public class AdministradorService {
         return animalService.cadastraAnimal(animalDto);
     }
 
-    public List<AnimalResponseDTO> listarAnimais() {
+    public List<AnimalFiltroDTO> listarAnimais() {
         return animalService.listarAnimais();
     }
 

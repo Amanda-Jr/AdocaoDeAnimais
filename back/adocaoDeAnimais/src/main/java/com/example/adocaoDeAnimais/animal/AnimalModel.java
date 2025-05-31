@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tb_animais")
 @Data
@@ -33,5 +35,17 @@ public class AnimalModel {
 
     @Column(name = "imagem")
     private String imagemUrl;
+
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
+
+    @Column(name = "vacinado")
+    private Boolean vacinado;
+
+    @Column(name = "castrado")
+    private Boolean castrado;
+
+    @Column(name = "resumo", length = 500)
+    private String resumo;
 
 }

@@ -2,7 +2,9 @@ package com.example.adocaoDeAnimais.sistema;
 
 
 import com.example.adocaoDeAnimais.adotante.*;
+import com.example.adocaoDeAnimais.animal.AnimalFiltroDTO;
 import com.example.adocaoDeAnimais.animal.AnimalResponseDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.naming.AuthenticationException;
@@ -29,7 +31,7 @@ public class SistemaController {
     }
 
     @GetMapping("/filtro")
-    public List<AnimalResponseDTO> buscaAnimal(@RequestParam("animal") String animal,
+    public List<AnimalFiltroDTO> buscaAnimal(@RequestParam("animal") String animal,
                                                @RequestParam("size") String size,
                                                @RequestParam("age") String age,
                                                @RequestParam("location") String location) {
@@ -37,7 +39,13 @@ public class SistemaController {
     }
 
     @GetMapping("/listar")
-    public List<AnimalResponseDTO> listarAnimais() {
+    public List<AnimalFiltroDTO> listarAnimais() {
         return sistemaService.listarAnimais();
+    }
+
+    @GetMapping("/animal/{id}")
+    public ResponseEntity<AnimalResponseDTO> getAnimalPorId(@PathVariable Long id) {
+        AnimalResponseDTO responseDTO = sistemaService.buscaAnimalPorId(id);
+        return ResponseEntity.ok(responseDTO);
     }
 }

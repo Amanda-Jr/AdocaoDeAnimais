@@ -28,12 +28,16 @@ public class SistemaService {
         return adotanteService.loginAdotante(adotante.email(), adotante.senha());
     }
 
-    public List<AnimalResponseDTO> buscaAnimal(String animal, String size, String age, String location) {
+    public List<AnimalFiltroDTO> buscaAnimal(String animal, String size, String age, String location) {
         return animalService.buscarAnimais(animal, size, age, location);
     }
 
-    public List<AnimalResponseDTO> listarAnimais() {
+    public List<AnimalFiltroDTO> listarAnimais() {
         return animalService.listarAnimais();
+    }
+
+    public AnimalResponseDTO buscaAnimalPorId(Long id) {
+        return animalService.buscaAnimalPorId(id);
     }
 
     //Quando fizer a parte de adocao, chama aqui

@@ -37,8 +37,8 @@ public class AdministradorController {
     }
 
     @GetMapping("/animais")
-    public ResponseEntity<List<AnimalResponseDTO>> listarAnimais() {
-        List<AnimalResponseDTO> animais = administradorService.listarAnimais();
+    public ResponseEntity<List<AnimalFiltroDTO>> listarAnimais() {
+        List<AnimalFiltroDTO> animais = administradorService.listarAnimais();
         return ResponseEntity.ok(animais);
     }
 

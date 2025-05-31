@@ -1,5 +1,7 @@
 package com.example.adocaoDeAnimais.animal;
 
+import java.time.LocalDate;
+
 public record AnimalResponseDTO(
         Long id,
         String animal,
@@ -7,6 +9,10 @@ public record AnimalResponseDTO(
         String age,
         String location,
         String name,
-        String image
+        String image,
+        LocalDate dataNascimento,
+        boolean vacinado,
+        boolean castrado,
+        String resumo
 ) {}
 
