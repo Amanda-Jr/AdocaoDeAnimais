@@ -6,4 +6,8 @@ export type Animal = {
   location: string;
   name: string;
   image: string;
+  dataNascimento: string;
+  resumo: string;
+  vacinado:boolean;
+  castrado:boolean;
 };

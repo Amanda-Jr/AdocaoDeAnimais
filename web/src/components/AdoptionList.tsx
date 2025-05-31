@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { AnimalCard } from "./AnimalCard";
 import { Button } from "./Button";
+import {Link} from "react-router-dom";
 
 type AdoptionFilterProps = {
   animal?: "dogs" | "cats" | "all";
@@ -156,7 +157,9 @@ export function AdoptionList() {
         <div className="flex gap-6 flex-wrap justify-center max-w-4/5">
           {animais.length ? (
               animais.map((animal) => (
-                  <AnimalCard key={animal.id} {...animal} />
+                  <Link to={`/pet/${animal.id}/details`} key={animal.id}>
+                    <AnimalCard {...animal} />
+                  </Link>
               ))
           ) : (
               <p>Nenhum animal encontrado</p>
