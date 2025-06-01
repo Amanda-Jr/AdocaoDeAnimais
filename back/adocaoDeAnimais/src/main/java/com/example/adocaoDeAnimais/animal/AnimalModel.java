@@ -48,4 +48,7 @@ public class AnimalModel {
     @Column(name = "resumo", length = 500)
     private String resumo;
 
+    @Column(name = "visibilidade")
+    private Boolean visivel;
+
 }
