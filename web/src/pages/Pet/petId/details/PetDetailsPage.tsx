@@ -1,8 +1,8 @@
 import type { Animal } from "@/@types/Animal";
 import { AnimalsSection } from "@/components/AnimalsSection";
 import { Button } from "@/components/Button";
-import { useParams } from "react-router";
-import {useEffect, useState} from "react";
+import { Link, useParams } from "react-router";
+import { useEffect, useState } from "react";
 
 enum ANIMAL_AGE_LABEL {
   adult = "Adulto",
@@ -50,73 +50,77 @@ function calcularIdade(dataNascimento: string): string {
 }
 
 export function PetDetailsPage() {
-  const { petId } = useParams<{ petId:string }>();
+  const { petId } = useParams<{ petId: string }>();
 
   const [animal, setAnimal] = useState<Animal | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    if(petId) {
+    if (petId) {
       fetch(`http://localhost:8081/api/sistema/animal/${petId}`)
-          .then((response) =>
-          {
-            if (!response.ok) {
-              throw new Error("Erro ao buscar animal");
-            }
-            return response.json();
-          })
-          .then((data : Animal) => {
-            setAnimal(data);
-            setLoading(false);
-          })
-          .catch((err) => {
-            console.error(err);
-            setError("Erro ao carregar dados do animal.")
-            setLoading(false);
-          })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro ao buscar animal");
+          }
+          return response.json();
+        })
+        .then((data: Animal) => {
+          setAnimal(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setError("Erro ao carregar dados do animal.");
+          setLoading(false);
+        });
     }
-
   }, [petId]);
 
-  if(loading) {
+  if (loading) {
     return <div>Carregando...</div>;
   }
 
-  if(error) {
+  if (error) {
     return <div>{error}</div>;
   }
 
-  if(!animal) {
+  if (!animal) {
     return <div>Animal não encontrado</div>;
   }
 
   return (
     <div className="mt-4">
-      <section className="flex justify-center bg-[url('/bg-pet-details.png')] py-6 mb-4">
-        <div className="w-full md:w-1/3">
+      <section className="flex justify-center bg-[url('/bg-pet-details.png')] bg-cover py-6 mb-4">
+        <div>
           <img
             src={animal.image}
             alt={animal.name}
-            className="w-full h-full aspect-square object-cover"
+            className="max-w-md aspect-square object-cover"
           />
         </div>
-        <div className="bg-white text-center w-sm h-md px-10 py-6">
-          <h1 className="font-semibold">
-            <span>{animal.name}</span>, {" "}
-            <span>{animal.dataNascimento ? calcularIdade(animal.dataNascimento) : animal.age}</span> -{" "}
-            <span>{animal.location}</span>, <span>SP</span>
+        <div className="bg-white text-center w-fit h-md px-10 py-6 flex flex-col justify-center text-[1.1rem]">
+          <h1 className="font-semibold text-[1.2rem]">
+            <span>{animal.name}</span>,{" "}
+            <span>
+              {animal.dataNascimento
+                ? calcularIdade(animal.dataNascimento)
+                : animal.age}
+            </span>{" "}
+            - <span>{animal.location}</span>, <span>SP</span>
           </h1>
           <p className="font-light">
             <span>Porte {ANIMAL_SIZE_LABEL[animal.size]}</span> |{" "}
             <span>{ANIMAL_AGE_LABEL[animal.age]}</span>{" "}
           </p>
           <p className="font-light">
-            {animal.vacinado ? "Vacinado" : "Não Vacinado"} | {" "}
+            {animal.vacinado ? "Vacinado" : "Não Vacinado"} |{" "}
             {animal.castrado ? "Castrado" : "Não Castrado"}
           </p>
-          <p className="text-sm my-6">{animal.resumo}</p>
-          <Button label="Adotar" className="mt-0 py-3" />
+          <p className="text-[1.1rem] my-6">{animal.resumo}</p>
+          <Link to={`/pet/${petId}/adoption`}>
+            <Button label="Adotar" className="mt-0 py-3" />
+          </Link>
         </div>
       </section>
       <AnimalsSection />
