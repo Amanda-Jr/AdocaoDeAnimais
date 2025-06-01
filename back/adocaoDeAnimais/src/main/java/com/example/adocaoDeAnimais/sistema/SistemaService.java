@@ -39,6 +39,4 @@ public class SistemaService {
     public AnimalResponseDTO buscaAnimalPorId(Long id) {
         return animalService.buscaAnimalPorId(id);
     }
-
-    //Quando fizer a parte de adocao, chama aqui
 }

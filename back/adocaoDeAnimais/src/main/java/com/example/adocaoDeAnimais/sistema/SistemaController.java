@@ -2,8 +2,7 @@ package com.example.adocaoDeAnimais.sistema;
 
 
 import com.example.adocaoDeAnimais.adotante.*;
-import com.example.adocaoDeAnimais.animal.AnimalFiltroDTO;
-import com.example.adocaoDeAnimais.animal.AnimalResponseDTO;
+import com.example.adocaoDeAnimais.animal.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
